@@ -54,7 +54,7 @@ def predict_sentiment(Comment):
     return sentiment[0]
 
 # Streamlit App
-st.title("Aplikasi Analisis Sentimen Komentar")
+st.title("Aplikasi Analisis Sentimen Komentar Mengenai Chatgpt")
 
 # Input komentar
 user_input = st.text_area("Masukkan komentar Anda di sini:", height=150)
