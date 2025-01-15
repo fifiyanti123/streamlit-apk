@@ -121,6 +121,13 @@ if st.sidebar.button("Tampilkan Data Training"):
 # Visualisasi sentimen dari dataset
 if st.sidebar.button("Visualisasi Sentimen Dataset"):
     if os.path.exists(dataset_path):
-        df = pd.read_excel(dataset_path)
-        sentiment_counts = df['sentiment'].value_counts()
-        st.bar_chart(sentiment_counts)
+        try:
+            df = pd.read_excel(dataset_path)
+            if 'sentiment' not in df.columns:
+                st.error("Kolom 'sentiment' tidak ditemukan di dataset. Harap unggah dataset yang sesuai.")
+            else:
+                sentiment_counts = df['sentiment'].value_counts()
+                st.bar_chart(sentiment_counts)
+        except Exception as e:
+            st.error(f"Gagal membaca dataset: {e}")
+
